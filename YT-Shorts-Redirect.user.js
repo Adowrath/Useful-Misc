@@ -5,9 +5,6 @@
 // @description  Rewrites and redirects from YouTube Shorts links
 // @author       Adowrath
 // @icon         https://www.youtube.com/favicon.ico
-// @updateURL    https://github.com/Adowrath/Useful-Misc/raw/main/YT-Shorts-Redirect.js
-// @downloadURL  https://github.com/Adowrath/Useful-Misc/raw/main/YT-Shorts-Redirect.js
-
 // @match        *://*.youtube.com/*
 // @run-at       document-start
 // @grant        none
