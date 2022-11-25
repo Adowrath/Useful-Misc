@@ -65,4 +65,8 @@ window.addEventListener("load", () => {
         childList: true,
         subtree: true
     });
+
+    for(let element of document.querySelectorAll("a")) {
+        fixElement(element);
+    }
 });
