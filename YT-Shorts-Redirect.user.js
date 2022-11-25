@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Shorts Redirect
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Rewrites and redirects from YouTube Shorts links
 // @author       Adowrath
 // @icon         https://www.youtube.com/favicon.ico
