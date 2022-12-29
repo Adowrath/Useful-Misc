@@ -29,5 +29,5 @@
             viewDateInfoBox.children[0].innerText = aufrufe;
             viewDateInfoBox.children[2].innerText = datum;
         } catch(e) {}
-    }, 1000 * 5);
+    }, 1000 * 1);
 })();
