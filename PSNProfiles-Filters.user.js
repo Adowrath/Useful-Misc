@@ -7,6 +7,7 @@
 // @match        https://psnprofiles.com/*
 // @icon         https://psnprofiles.com/favicon.ico
 // @grant        none
+// @downloadURL  https://github.com/Adowrath/Useful-Misc/raw/main/PSNProfiles-Filters.user.js
 // ==/UserScript==
 
 (function() {

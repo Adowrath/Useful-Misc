@@ -8,6 +8,7 @@
 // @match        *://*.youtube.com/*
 // @run-at       document-start
 // @grant        none
+// @downloadURL  https://github.com/Adowrath/Useful-Misc/raw/main/YT-Shorts-Redirect.user.js
 // ==/UserScript==
 
 'use strict';
