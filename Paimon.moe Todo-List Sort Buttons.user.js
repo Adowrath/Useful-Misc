@@ -7,6 +7,7 @@
 // @match        https://paimon.moe/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=paimon.moe
 // @grant        none
+// @downloadURL  https://github.com/Adowrath/Useful-Misc/raw/main/Paimon.moe%20Todo-List%20Sort%20Buttons.user.js
 // ==/UserScript==
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
