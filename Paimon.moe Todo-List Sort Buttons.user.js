@@ -149,7 +149,7 @@ function sortTodoListItems() {
       , "Vayuda Turquoise Fragment": 75_700_000_000
       , "Vayuda Turquoise Sliver":   75_600_000_000
       , "Hurricane Seed":            75_500_000_000     // Cube
-                                                        // Plant
+      , "Pseudo-Stamens":            75_400_000_000     // Plant (Setekh Wenut)
 
       , "Artificed Spare Clockwork Component — Coppelius": 75_000_000_000 // Icewind Suite 01
        
@@ -171,6 +171,7 @@ function sortTodoListItems() {
       , "Basalt Pillar":           73_500_000_000       // Cube
                                                         // Plant
       , "Runic Fang":              73_300_000_000       // Ruin Serpent
+      , "Riftborn Regalia":        73_200_000_000       // Golden Wolflord
 
         // Mixed Bosses
       , "Juvenile Jade":             72_900_000_000
