@@ -150,6 +150,8 @@ function sortTodoListItems() {
       , "Vayuda Turquoise Sliver":   75_600_000_000
       , "Hurricane Seed":            75_500_000_000     // Cube
                                                         // Plant
+
+      , "Artificed Spare Clockwork Component — Coppelius": 75_000_000_000 // Icewind Suite 01
        
         // Cryo
       , "Shivada Jade Gemstone": 74_900_000_000
@@ -158,6 +160,8 @@ function sortTodoListItems() {
       , "Shivada Jade Sliver":   74_600_000_000
       , "Crystalline Bloom":     74_500_000_000         // Cube
       , "Hoarfrost Core":        74_400_000_000         // Plant
+
+      , "Ar­ti­ficed Spare Clock­work Com­po­nent — Cop­pe­li­us": 74_000_000_000 // Icewind Suite 02
        
         // Geo
       , "Prithiva Topaz Gemstone": 73_900_000_000
@@ -174,6 +178,7 @@ function sortTodoListItems() {
       , "Perpetual Heart":           72_700_000_000
       , "Perpetual Caliber":         72_600_000_000
       , "Light Guiding Tetrahedron": 72_500_000_000
+      , "Evergloom Ring":            72_400_000_000
 
         // Slime
       , "Slime Concentrate": 69_900_000_000
@@ -276,6 +281,10 @@ function sortTodoListItems() {
       , "Radiant Prism": 46_900_000_000
       , "Turbid Prism":  46_800_000_000
       , "Damaged Prism": 46_700_000_000
+
+      , "Artificed Dynamic Gear": 45_900_000_000
+      , "Mechanical Spur Gear":  45_800_000_000
+      , "Meshing Gear": 45_700_000_000
       };
     let items =
       [...table.querySelectorAll("tr:not(:has(span.line-through))")]
