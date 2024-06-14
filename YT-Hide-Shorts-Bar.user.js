@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YT Hide Shorts in subscription page
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Hides the Shorts bar from your subcription page
 // @author       Midtan
 // @icon         https://www.youtube.com/favicon.ico
