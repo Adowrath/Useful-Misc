@@ -14,6 +14,8 @@
 'use strict';
 
 window.addEventListener("yt-service-request-completed", () => {
-  let shelf = document.getElementsByClassName("ytd-reel-shelf-renderer")[0].parentElement.parentElement.parentElement;
-  shelf.style.display = "none";
+  document.querySelectorAll(`
+     ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
+     ytd-item-section-renderer:has(ytd-reel-shelf-renderer)
+  `).forEach(shelf => shelf.style.display = 'none');
 });
