@@ -202,8 +202,8 @@ function titleChanger(action) {
             }
         },
         tick() {
-            if(document.title === this.titles.?[0]) {
-                document.title = this.titles.?[1];
+            if(document.title === this.titles?.[0]) {
+                document.title = this.titles?.[1];
             }
         },
         disable() {
