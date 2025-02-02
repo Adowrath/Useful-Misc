@@ -6,7 +6,7 @@
 // @match        https://www.orzgk.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=orzgk.com
 // @require      https://raw.githubusercontent.com/Adowrath/Useful-Misc/refs/heads/main/Shop-Ignore-Scripts/Framework.js
-// @downloadURL  https://raw.githubusercontent.com/Adowrath/Useful-Misc/refs/heads/main/Shop-Ignore-Scripts/OrzGK.js
+// @downloadURL  https://raw.githubusercontent.com/Adowrath/Useful-Misc/refs/heads/main/Shop-Ignore-Scripts/OrzGK.user.js
 // @grant        window.close
 // ==/UserScript==
 
