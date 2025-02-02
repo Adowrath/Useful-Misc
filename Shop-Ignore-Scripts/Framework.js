@@ -149,7 +149,7 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
         menu.appendChild(menuGroup);
     }
 
-    const updateRoutes = (newPath) => {
+    const updateRoutes = async (newPath) => {
         let disableActions = [];
         let enableActions = [];
         for (let route of routes) {
@@ -167,16 +167,16 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
             }
         }
 
-        disableActions.forEach(fun => fun());
-        enableActions.forEach(fun => fun());
+        await Promise.all(disableActions.map(fun => fun()));
+        await Promise.all(enableActions.map(fun => fun()));
     };
-    updateRoutes(location.pathname);
+    await updateRoutes(location.pathname);
 
     let lastLocation = location.pathname;
     while (true) {
         if (lastLocation !== location.pathname) {
             lastLocation = location.pathname;
-            updateRoutes(lastLocation);
+            await updateRoutes(lastLocation);
         }
         await sleep(1000);
     }
@@ -185,8 +185,8 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
 function titleChanger(action) {
     return {
         titles: null,
-        enable() {
-            let newTitle = action.call(this);
+        async enable() {
+            let newTitle = await action.call(this);
             if(newTitle !== undefined) {
                 this.titles = [
                     document.title,
