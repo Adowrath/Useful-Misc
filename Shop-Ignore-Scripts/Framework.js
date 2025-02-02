@@ -149,7 +149,7 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
         menu.appendChild(menuGroup);
     }
 
-    const tickActions = [];
+    let tickActions = [];
     const updateRoutes = async (newPath) => {
         tickActions = [];
         
