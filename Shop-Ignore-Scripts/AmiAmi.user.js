@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Shop Ignore Compatibility
+// @name         Shop Ignore Compatibility - AmiAmi
 // @version      v1.0
 // @description  Compatibility for my Shop Ignore extension. Unlikely to be useful to anyone else.
 // @author       Adowrath
