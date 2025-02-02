@@ -149,7 +149,10 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
         menu.appendChild(menuGroup);
     }
 
+    const tickActions = [];
     const updateRoutes = async (newPath) => {
+        tickActions = [];
+        
         let disableActions = [];
         let enableActions = [];
         for (let route of routes) {
@@ -161,6 +164,7 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
             let patterns = route.pattern instanceof Array ? route.pattern : [route.pattern];
             if (!patterns.every(p => !p.test(newPath))) {
                 enableActions.push(() => route.enable?.());
+                tickActions.push(() => route.tick?.());
                 route[GROUP_ELEMENT]?.classList.add("active");
             } else {
                 route[GROUP_ELEMENT]?.classList.remove("active");
@@ -179,6 +183,9 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
             await updateRoutes(lastLocation);
         }
         await sleep(1000);
+        await Promise.all(
+            tickActions.map(f => f())
+        );
     }
 }
 
@@ -192,6 +199,11 @@ function titleChanger(action) {
                     document.title,
                     document.title = newTitle
                 ];
+            }
+        },
+        tick() {
+            if(document.title === this.titles.?[0]) {
+                document.title = this.titles.?[1];
             }
         },
         disable() {
