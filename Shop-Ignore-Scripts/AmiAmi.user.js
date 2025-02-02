@@ -78,6 +78,18 @@ const routes = [
                     await sleep(100);
                 }
 
+                let articles = [...document.querySelectorAll(`.owl-item:has(a[href*="/detail"]`)];
+                let unprocessed = () => articles.filter(e => !e.classList.contains("processed"));
+
+                if(event.ctrlKey) {
+                    while(unprocessed().length > 0) {
+                        await sleep(100);
+                    }
+                } else {
+                    unprocessed().map(e => e.querySelector("a[href*=\"/detail\"]")).forEach(e => window.open(e.href));
+                }
+                    
+
                 await sleep(2000);
                 window.close();
                 await sleep(5000);
