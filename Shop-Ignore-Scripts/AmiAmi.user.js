@@ -62,7 +62,7 @@ const routes = [
         ...titleChanger(() => `[Product: TODO] ${document.title}`),
         menuItems: [{
             text: "Ignore and Close",
-            async action(cb) {
+            async action(event, cb) {
                 let ignoreBtn = document.querySelector(".btn-ignore button");
 
                 while(true) {
