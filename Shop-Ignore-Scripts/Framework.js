@@ -72,7 +72,7 @@ async function createFloatingMenu(name, mainColor, accentColor, routes) {
     let sheet = new CSSStyleSheet();
     sheet.replaceSync(`
         #floating-menu {
-            position: absolute;
+            position: fixed;
             border: 1px solid ${accentColor};
             background-color: ${mainColor};
             padding: 6px;
