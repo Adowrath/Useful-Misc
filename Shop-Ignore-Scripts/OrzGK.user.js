@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shop Ignore Compatibility - OrzGK
-// @version      v1.0
+// @version      v1.1
 // @description  Compatibility for my Shop Ignore extension. Unlikely to be useful to anyone else.
 // @author       Adowrath
 // @match        https://www.orzgk.com/*
@@ -79,7 +79,6 @@ const routes = [
                 }
 
                 if(unprocessed().length === 0) {
-                    alert("Closing!");
                     await sleep(2000);
                     window.close();
                     await sleep(5000);
