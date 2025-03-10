@@ -204,6 +204,9 @@ function titleChanger(action) {
         tick() {
             if(document.title === this.titles?.[0]) {
                 document.title = this.titles?.[1];
+            } else if(this.titles != null && document.title !== this.titles?.[1]) {
+                this.titles = null;
+                this.enable();
             }
         },
         disable() {
