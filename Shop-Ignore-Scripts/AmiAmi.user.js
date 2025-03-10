@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shop Ignore Compatibility - AmiAmi
-// @version      v1.1
+// @version      v1.2
 // @description  Compatibility for my Shop Ignore extension. Unlikely to be useful to anyone else.
 // @author       Adowrath
 // @match        https://www.amiami.com/*
@@ -80,6 +80,9 @@ const routes = [
 
             if(document.querySelector(".item-detail__error-title")?.textContent === "System Error Occured") {
                 return `[- System Error Occured -] ${document.title}`;
+            }
+            if(document.querySelector(".item-detail__error-title")?.textContent === "The item is not found.") {
+                return `[- The item is not found. -] ${document.title}`;
             }
 
             let releaseDate = () => [...document.querySelectorAll(".item-about__data-title")]
