@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shop Ignore Compatibility - AmiAmi
-// @version      v1.0
+// @version      v1.1
 // @description  Compatibility for my Shop Ignore extension. Unlikely to be useful to anyone else.
 // @author       Adowrath
 // @match        https://www.amiami.com/*
@@ -59,7 +59,50 @@ const routes = [
     },
     {
         pattern: /^\/eng\/detail\//,
-        ...titleChanger(() => `[Product: TODO] ${document.title}`),
+        ...titleChanger(async () => {
+            while(document.querySelector("#__nuxt .spinner") !== null) {
+                await sleep(100);
+            }
+
+            if(document.querySelector(".item-detail-alert")) {
+                alert("Hey!");
+            }
+
+            if(location.href.indexOf("gcode=") !== -1) {
+                location.href = `https://www.amiami.com/eng/detail/?scode=${new URL(location.href).searchParams.get("gcode")}`;
+                return;
+            }
+
+            if(location.href.indexOf("__cf_chl_rt_tk") !== -1) {
+                location.href = `https://www.amiami.com/eng/detail/?scode=${new URL(location.href).searchParams.get("scode")}`;
+                return;
+            }
+
+            if(document.querySelector(".item-detail__error-title")?.textContent === "System Error Occured") {
+                return `[- System Error Occured -] ${document.title}`;
+            }
+
+            let releaseDate = () => [...document.querySelectorAll(".item-about__data-title")]
+                  .filter(e => e.textContent === "Release Date")
+                  [0]
+                  ?.nextSibling
+                  .textContent;
+            while(releaseDate() === undefined || releaseDate() === '') {
+                await sleep(100);
+            }
+
+            let shopCode = () => [...document.querySelectorAll(".item-about__data-title")]
+                  .filter(e => e.textContent === "Shop Code")
+                  [0]
+                  ?.nextSibling
+                  .textContent;
+            if(new URL(location.href).searchParams.get("scode") !== shopCode()) {
+                location.href = `https://www.amiami.com/eng/detail/?scode=${shopCode()}`;
+                return;
+            }
+
+            return `[Product: ${releaseDate()}] ${document.title}`;
+        }),
         menuItems: [{
             text: "Ignore and Close",
             async action(event, cb) {
@@ -88,7 +131,6 @@ const routes = [
                 } else {
                     unprocessed().map(e => e.querySelector("a[href*=\"/detail\"]")).forEach(e => window.open(e.href));
                 }
-                    
 
                 await sleep(2000);
                 window.close();
