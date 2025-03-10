@@ -47,10 +47,21 @@ const routes = [
                         while(unprocessed().length > 0) {
                             await sleep(100);
                         }
+                        let resultText = document.querySelector(".woocommerce-result-count").textContent.trim();
+                        if(!/^Showing \d+–(\d+) of \1 results/.test(resultText)
+                           && !/^Showing all \d+ results/.test(resultText)) {
+                            while(loadMore().length === 0) await sleep(100);
+                        }
+
                         let loadMoreButtons = loadMore();
+                        if(loadMoreButtons.length === 0) {
+                            await sleep(5000);
+                            let loadMoreButtons = loadMore();
+                        }
                         if(loadMoreButtons.length > 0) {
                             if(location.pathname.indexOf("/page/") !== -1) {
                                 location.href = location.href.replace(/\/page\/(\d+)\//, (_, page) => `/page/${+page + 1}/`);
+                                return;
                             } else {
                                 let lastLocation = location.href;
                                 loadMoreButtons[0].click();
@@ -68,6 +79,7 @@ const routes = [
                 }
 
                 if(unprocessed().length === 0) {
+                    alert("Closing!");
                     await sleep(2000);
                     window.close();
                     await sleep(5000);
