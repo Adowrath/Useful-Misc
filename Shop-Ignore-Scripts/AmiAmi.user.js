@@ -124,7 +124,7 @@ const routes = [
                     await sleep(100);
                 }
 
-                let articles = [...document.querySelectorAll(`.owl-item:has(a[href*="/detail"]`)];
+                let articles = [...document.querySelectorAll(`.owl-item:has(a[href*="/detail"]`)].filter(e => e.closest(".item-slide-banner") === null);
                 let unprocessed = () => articles.filter(e => !e.classList.contains("processed"));
 
                 if(event.ctrlKey) {
