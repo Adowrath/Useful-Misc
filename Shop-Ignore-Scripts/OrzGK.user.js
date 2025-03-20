@@ -26,7 +26,8 @@ const routes = [
                 if(resultElem) {
                     let resultText = resultElem.textContent.trim();
                     let total = /^Showing \d+–\d+ of (\d+) results/.exec(resultText)?.[1]
-                    ?? /^Showing all (\d+) results/.exec(resultText)?.[1];
+                    ?? /^Showing all (\d+) results/.exec(resultText)?.[1]
+                    ?? (/^Showing the single result/.exec(resultText)?.[0] ? '1' : null);
 
                     return `[Search: ${formatNumber(total)}] ${document.title}`;
                 }
@@ -49,7 +50,8 @@ const routes = [
                         }
                         let resultText = document.querySelector(".woocommerce-result-count").textContent.trim();
                         if(!/^Showing \d+–(\d+) of \1 results/.test(resultText)
-                           && !/^Showing all \d+ results/.test(resultText)) {
+                           && !/^Showing all \d+ results/.test(resultText)
+                           && !/^Showing the single result/.test(resultText)) {
                             while(loadMore().length === 0) await sleep(100);
                         }
 
@@ -65,12 +67,22 @@ const routes = [
                             } else {
                                 let lastLocation = location.href;
                                 loadMoreButtons[0].click();
+
+                                let locationChanged = false;
+                                let locationChanger = (async () => {
+                                    while(lastLocation === location.href) {
+                                        await sleep(100);
+                                    }
+                                    locationChanged = true;
+                                })();
+
                                 while(document.querySelector(".fibofilters-product-placeholder") !== null) {
                                     await sleep(100);
+                                    if(locationChanged) location.reload();
                                 }
-                                while(lastLocation === location.href) {
-                                    await sleep(100);
-                                }
+                                await locationChanger;
+                                location.reload();
+
                                 continue;
                             }
                         }
