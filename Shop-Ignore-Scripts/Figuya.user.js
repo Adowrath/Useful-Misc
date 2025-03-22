@@ -18,7 +18,7 @@ const routes = [
         ],
         ...titleChanger(async () => {
             try {
-                let { id: taxonId } = await (await fetch("https://figuya.com/storefront/taxons/abs.json?locale=de&view=show")).json();
+                let { id: taxonId } = await (await fetch(`https://figuya.com/storefront/taxons/${location.pathname.split("/")[3]}.json?locale=de&view=show`)).json();
                 let { meta: {total_pages: totalItems} } = await (await fetch(`https://figuya.com/storefront/products.json?page=1&taxon_ids=${taxonId}&per=1&stock_state=sold_out%2Corder_stop%2Cpreorder%2Cbackorder%2Cstocked`)).json();
 
                 return `[Search: ${formatNumber(totalItems)}] ${document.title}`;
