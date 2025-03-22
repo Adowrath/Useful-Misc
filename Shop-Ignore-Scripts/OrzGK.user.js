@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Shop Ignore Compatibility - OrzGK
-// @version      v1.1
+// @version      v1.2
 // @description  Compatibility for my Shop Ignore extension. Unlikely to be useful to anyone else.
 // @author       Adowrath
 // @match        https://www.orzgk.com/*
@@ -30,6 +30,12 @@ const routes = [
                     ?? (/^Showing the single result/.exec(resultText)?.[0] ? '1' : null);
 
                     return `[Search: ${formatNumber(total)}] ${document.title}`;
+                }
+
+                if(document.querySelector("#cf-wrapper #cf-error-details h1 .inline-block")?.textContent === "A timeout occurred") {
+                    await sleep(1000 * 30);
+                    location.reload();
+                    return `[Timeout] ${document.title}`;
                 }
                 await sleep(1000);
             }
@@ -78,12 +84,14 @@ const routes = [
 
                                 while(document.querySelector(".fibofilters-product-placeholder") !== null) {
                                     await sleep(100);
-                                    if(locationChanged) location.reload();
+                                    if(locationChanged) {
+                                        location.reload();
+                                        return;
+                                    }
                                 }
                                 await locationChanger;
                                 location.reload();
-
-                                continue;
+                                return;
                             }
                         }
                         break;
